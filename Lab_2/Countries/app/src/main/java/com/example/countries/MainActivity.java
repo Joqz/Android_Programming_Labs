@@ -15,12 +15,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Arraylist for countries
     public ArrayList<String> countries = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Adding countries to the list
         countries.add("Afghanistan");
         countries.add("Albania");
         countries.add("Algeria");
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         countries.add("Austria");
         countries.add("Azerbaijan");
 
+        //Starting to construct the view
         LinearLayout.LayoutParams horizontalParams =
                 new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         horizontalParams.gravity = Gravity.CENTER;
@@ -58,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText editText = new EditText(this);
 
+        //Damn this is pretty annoying
+
         Button addButton = new Button(this);
         addButton.setText("Add");
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -68,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button edit_Button = new Button(this);
-        edit_Button.setText("Edit");
+        Button editButton = new Button(this);
+        editButton.setText("Edit");
 
         Button removeButton = new Button(this);
         removeButton.setText("Remove");
@@ -83,13 +88,14 @@ public class MainActivity extends AppCompatActivity {
 
         verticalLayout.addView(horizontalLayout);
         horizontalLayout.addView(addButton);
-        horizontalLayout.addView(edit_Button);
+        horizontalLayout.addView(editButton);
         horizontalLayout.addView(removeButton);
         verticalLayout.addView(editText);
         verticalLayout.addView(listView);
 
         setContentView(verticalLayout);
 
+        //Phew.
     }
 
     public void addCountries(String country) {

@@ -1,14 +1,12 @@
 package com.example.menus;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    //Constructing the options menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -27,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    //Setting functions to the items that are used to change color and text in the view
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         View container = findViewById(R.id.container);

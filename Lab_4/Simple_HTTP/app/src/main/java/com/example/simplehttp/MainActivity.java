@@ -3,9 +3,8 @@ package com.example.simplehttp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -23,29 +22,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    }
-
-    public void sendRequest(View view) {
         final TextView textView = findViewById(R.id.textView);
         final EditText editText = findViewById(R.id.editText);
-        
-        RequestQueue queue = Volley.newRequestQueue(this);
+        Button button = findViewById(R.id.button);
 
-        String url = editText.getText().toString();
-        Log.d("sendRequest", "" + url);
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        textView.setText(response);
-                    }
-                }, new Response.ErrorListener() {
+        //Setting an onclick listener to the button which reads the edittext and sends a request to the provided url
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                textView.setText("That didn't work!");
+            public void onClick(View v) {
+                textView.setText("Loading.... Please wait....");
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+                String stringURL = editText.getText().toString();
+
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, stringURL,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                textView.setText(response);
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        textView.setText("Something went wrong!");
+                    }
+                });
+                requestQueue.add(stringRequest);
             }
         });
-        queue.add(stringRequest);
     }
 }

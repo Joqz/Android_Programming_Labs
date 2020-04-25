@@ -13,17 +13,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final Button gameButton = new Button(this);
-        gameButton.setText("Poke me. Times poked:" + clicks);
 
-        gameButton.setOnClickListener(new View.OnClickListener() {
+        final Button button = new Button(this);
+        button.setText("Poke me. Times poked:" + clicks);
+
+        //Setting onclick listener to the button which adds clicks and updates the textview
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clicks++;
-                gameButton.setText("Poke me. Times poked:" + clicks);
+                button.setText("Poke me. Times poked:" + clicks);
             }
         });
 
-        setContentView(gameButton);
+        setContentView(button);
     }
 }

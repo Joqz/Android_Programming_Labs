@@ -3,11 +3,6 @@ package com.example.stockmonitor;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -20,48 +15,61 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 public class MainActivity extends AppCompatActivity {
 
+    //apple AAPL   google GOOGL   facebook FB   nokia NOK
+
+    //Constructing an array with the companies stock ids
     String[] companies = {"AAPL", "GOOGL", "FB", "NOK"};
-    String[] prices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listView = findViewById(R.id.companylist);
-        CustomAdapter customAdapter = new CustomAdapter();
-        listView.setAdapter(customAdapter);
-    }
+        final TextView company1 = findViewById(R.id.company1);
+        final TextView company2 = findViewById(R.id.company2);
+        final TextView company3 = findViewById(R.id.company3);
+        final TextView company4 = findViewById(R.id.company4);
 
+        //Creating a Volley requestqueue
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-    class CustomAdapter extends BaseAdapter{
+        //Looping through the companies and adding requests to the queue
+        for (int i=0; i < companies.length; i++) {
+            String stringURL = "https://financialmodelingprep.com/api/company/price/"+companies[i]+"?datatype=json";
 
-        @Override
-        public int getCount() {
-            return companies.length;
-        }
+            final int finalI = i;
 
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = getLayoutInflater().inflate(R.layout.activity_main, null);
-
-            TextView name = convertView.findViewById(R.id.companyName);
-            TextView price = convertView.findViewById(R.id.price);
-
-            name.setText(companyName[i]);
-            price.setText(price[i]);
+            //Requesting JSON objects and setting these responses to the text views
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, stringURL,
+                    null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        if (companies[finalI].equals("AAPL")) {
+                            company1.setText("Apple: " + response.getJSONObject(companies[finalI]).getString("price") + " USD");
+                        }
+                        if (companies[finalI].equals("GOOGL")) {
+                            company2.setText("Google: " + response.getJSONObject(companies[finalI]).getString("price") + " USD");
+                        }
+                        if (companies[finalI].equals("FB")) {
+                            company3.setText("Facebook: " + response.getJSONObject(companies[finalI]).getString("price") + " USD");
+                        }
+                        if (companies[finalI].equals("NOK")) {
+                            company4.setText("Nokia: " + response.getJSONObject(companies[finalI]).getString("price") + " USD");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                }
+            });
+            requestQueue.add(jsonObjectRequest);
         }
     }
 }

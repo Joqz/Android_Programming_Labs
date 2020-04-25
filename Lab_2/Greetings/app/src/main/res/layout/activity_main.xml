@@ -15,49 +15,45 @@
 
     <Button
         android:id="@+id/english"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="english"
         android:text="English"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/swedish"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <Button
         android:id="@+id/swedish"
-        android:layout_width="wrap_content"
+        android:text="På svenska"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Swedish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/english"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <Button
         android:id="@+id/finnish"
-        android:layout_width="wrap_content"
+        android:text="Suomeksi"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Finnish"
         app:layout_constraintEnd_toStartOf="@+id/surprise"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/english" />
 
     <Button
         android:id="@+id/surprise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Surprise"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/finnish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/swedish" />
 
     <TextView
         android:id="@+id/textView"
+        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="test"
-        android:textAlignment="center"
-        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
