@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("Timer activity", string);
                     startActivity(intent);
                 }
-
             }
         });
     }

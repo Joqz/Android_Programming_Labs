@@ -40,17 +40,20 @@ public class MainActivity extends AppCompatActivity {
         countries.add("Azerbaijan");
 
         //Starting to construct the view
-        LinearLayout.LayoutParams horizontalParams =
-                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        horizontalParams.gravity = Gravity.CENTER;
 
+        //The 'base' linear layout
         LinearLayout verticalLayout = new LinearLayout(this);
         verticalLayout.setOrientation(LinearLayout.VERTICAL);
 
+        //The horizontal linear layout for the buttons
         LinearLayout horizontalLayout = new LinearLayout(this);
         horizontalLayout.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout.LayoutParams horizontalParams =
+                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        horizontalParams.gravity = Gravity.CENTER;
         horizontalLayout.setLayoutParams(horizontalParams);
 
+        //Listview for the countries
         ListView listView = new ListView(this);
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this,
@@ -59,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
         );
         listView.setAdapter(arrayAdapter);
 
+        //The edit text box for adding and removing countries
         final EditText editText = new EditText(this);
 
-        //Damn this is pretty annoying
-
+        //Add button
         Button addButton = new Button(this);
         addButton.setText("Add");
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -73,9 +76,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Edit button (no functionality)
         Button editButton = new Button(this);
         editButton.setText("Edit");
 
+        //Remove button
         Button removeButton = new Button(this);
         removeButton.setText("Remove");
         removeButton.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Adding the content into the layouts
         verticalLayout.addView(horizontalLayout);
         horizontalLayout.addView(addButton);
         horizontalLayout.addView(editButton);
@@ -98,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         //Phew.
     }
 
+    //Constructing functions to add and remove countries from the arraylist
     public void addCountries(String country) {
         countries.add(country);
     }

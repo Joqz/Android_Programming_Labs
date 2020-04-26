@@ -46,16 +46,16 @@ public class MainActivity extends AppCompatActivity {
 
     //Function to open Google Maps with Kotkantie Campus location
     public void openMap() {
-        Uri location = Uri.parse("geo:0,0?q=Kotkantie+1+,+Oulu");
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
+        Uri address = Uri.parse("geo:0,0?q=Kotkantie+1+,+Oulu");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, address);
 
         startActivity(mapIntent);
     }
 
     //Function to open the caller with a prefilled OAMK number
     public void callNumber() {
-        Uri number = Uri.parse("tel: +020 611 0200");
-        Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+        Uri phoneNumber = Uri.parse("tel: +020 611 0200");
+        Intent callIntent = new Intent(Intent.ACTION_DIAL, phoneNumber);
 
         startActivity(callIntent);
     }
@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
     //Function to web browser with input address
     public void openSite() {
         EditText editText = findViewById(R.id.editText);
-        Uri webPage = Uri.parse(editText.getText().toString());
-        Intent siteIntent = new Intent(Intent.ACTION_VIEW, webPage);
+        Uri pageURL = Uri.parse(editText.getText().toString());
+        Intent siteIntent = new Intent(Intent.ACTION_VIEW, pageURL);
 
         startActivity(siteIntent);
     }

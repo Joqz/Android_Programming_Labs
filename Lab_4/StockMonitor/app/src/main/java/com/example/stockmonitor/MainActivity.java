@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         //Creating a Volley requestqueue
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        //Looping through the companies and adding requests to the queue
+        //Looping through the company stock ids and adding requests to the queue
         for (int i=0; i < companies.length; i++) {
             String stringURL = "https://financialmodelingprep.com/api/company/price/"+companies[i]+"?datatype=json";
 

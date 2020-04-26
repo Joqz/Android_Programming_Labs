@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Getting buttons and views for later use
         final TextView textView = findViewById(R.id.textView);
         final EditText editText = findViewById(R.id.editText);
 
@@ -51,7 +52,5 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText("привет " + editText.getText().toString());
             }
         });
-
-
     }
 }

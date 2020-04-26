@@ -31,7 +31,7 @@ public class TimerActivity extends AppCompatActivity {
                 textView.setText("" + millisUntilFinished / 1000);
             }
 
-            //Once the timer finishes, play nuclear meltdown alert
+            //Once the timer finishes, play nuclear meltdown alert ':D'
             public void onFinish() {
                 textView.setText("Time's up!");
                 mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.alarm);
