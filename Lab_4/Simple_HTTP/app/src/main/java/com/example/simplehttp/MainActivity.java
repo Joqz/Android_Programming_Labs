@@ -30,25 +30,25 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView.setText("Loading.... Please wait....");
+            textView.setText("Loading.... Please wait....");
 
-                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                String stringURL = editText.getText().toString();
+            String stringURL = editText.getText().toString();
 
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, stringURL,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                textView.setText(response);
-                            }
-                        }, new Response.ErrorListener() {
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, stringURL,
+                new Response.Listener<String>() {
                     @Override
-                    public void onErrorResponse(VolleyError error) {
-                        textView.setText("Something went wrong!");
+                    public void onResponse(String response) {
+                        textView.setText(response);
                     }
-                });
-                requestQueue.add(stringRequest);
+                }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    textView.setText("Something went wrong!");
+                }
+            });
+            requestQueue.add(stringRequest);
             }
         });
     }

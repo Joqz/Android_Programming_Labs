@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(callIntent);
     }
 
-    //Function to web browser with input address
+    //Function to open web browser with input address
     public void openSite() {
         EditText editText = findViewById(R.id.editText);
         Uri pageURL = Uri.parse(editText.getText().toString());

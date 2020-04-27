@@ -43,10 +43,12 @@ public class TimerActivity extends AppCompatActivity {
     //Cancel the alarm when going back
     @Override
     public void onBackPressed() {
+
         if(mediaPlayer.isPlaying()){
             mediaPlayer.stop();
             super.onBackPressed();
         }
+
         else{
             super.onBackPressed();
         }

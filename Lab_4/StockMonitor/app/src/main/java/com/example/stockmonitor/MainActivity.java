@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
             //Requesting JSON objects and setting these responses to the text views
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, stringURL,
-                    null, new Response.Listener<JSONObject>() {
+                null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     try {

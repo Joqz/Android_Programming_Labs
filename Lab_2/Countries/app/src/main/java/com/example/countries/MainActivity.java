@@ -56,9 +56,7 @@ public class MainActivity extends AppCompatActivity {
         //Listview for the countries
         ListView listView = new ListView(this);
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                countries
+                this, android.R.layout.simple_list_item_1, countries
         );
         listView.setAdapter(arrayAdapter);
 

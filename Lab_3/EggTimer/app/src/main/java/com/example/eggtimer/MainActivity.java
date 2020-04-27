@@ -25,9 +25,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
                 EditText editText = findViewById(R.id.editText);
                 String string = editText.getText().toString();
+
                 if(string.equals("")){
                     Toast.makeText(getApplicationContext(), "Please input a number", Toast.LENGTH_SHORT).show();
                 }
+
                 else{
                     intent.putExtra("Timer activity", string);
                     startActivity(intent);
